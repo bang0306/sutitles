@@ -1,0 +1,32 @@
+00:04 we spend quite a bit of time to talk about how we are going to build this application
+00:06 so it's time to actually start write some code
+00:12 Let's start by opening our code editor and start up our development server
+00:14 I've already opened up my own code editor
+00:19 somethind started by running npm run start inside our project directory
+00:27 And inside of my code editor, I'm gonna find my index.js file inside the src directory and open it up
+00:33 OK, the first thing I wanna do is I wanna play around with React-router
+00:40 The end goal I wanna have is just inside this section is to create two different routes the user can visit inside our application
+00:47 And based on the route or the URL user is visiting, I wanna see slit different contents appear on the screen
+00:55 The first thing we gonna do to make this happen is we are gonna to create two very small components we are just gonna make right now and eventually delete very shortly after
+01:02 So inside the index.js file right above the React.render call.
+01:06 I'm gonna create these two seperate components we are just using two test process.
+01:08 we're gonna make them both class based components.
+01:20 so we say class Hello extends React.component, then we define just the render method inside here
+01:25 Then we return a div, it contains the text Hello
+01:32 Then I duplicate exact the same thing, paste right beneath
+01:35 Now I'm gonna change the text inside of this to be Goodbye
+01:41 So I change the class name to goodbye and we change the text inside the div to goodbye as well
+01:49 Ok, there're two very small test components at this point we've done absolutely nothing specifically to react-router
+01:55 So now we are gonna to talking about what we have to write to get react-router started up in our application
+02:00 we are starting out by importing a coupou piece of code from react-router
+02:05 and we are going to wire each of them up in the ReactDom.render call
+02:08 So let's go to the top of the file and get started
+02:14 I'm gonna to flipped up to the top of the file and I'm gonna add an import statement
+02:20 we're gonna import a couple different items from react-router-dom
+02:25 The first thing I'm gonna grab is BrowserRouter
+02:34 This Browser Router object right here is inside the react history library and decides what exactly to do based on the change of URL
+02:44 The term BrowserRouter in particular is saying I wanna BrowserRouter to look at the entire URL when deciding what different componets show on the screen
+02:48 And we definitly talk about some of the different aspects of this later on
+02:53 so from right now, we are gonna say this is a piece of code in react history library
+03:00 The next thing we are gonna import is the Route Component
+03:04 So the Route component here is the real workhorse of all things of react-router
