@@ -1,32 +1,123 @@
 00:04 we spend quite a bit of time to talk about how we are going to build this application
+我们已经花了很长时间讲了怎么去构建我们的app
 00:06 so it's time to actually start write some code
+现在时候写点儿代码了
 00:12 Let's start by opening our code editor and start up our development server
+让我们打开编辑器，启动开发服务器
 00:14 I've already opened up my own code editor
+我已经把编辑器打开了
 00:19 somethind started by running npm run start inside our project directory
+我们在工程目录下输入命令npm run start
 00:27 And inside of my code editor, I'm gonna find my index.js file inside the src directory and open it up
+在编辑器中src目录下找到index.js文件并打开它
 00:33 OK, the first thing I wanna do is I wanna play around with React-router
+首先我想先试着用一下react-router
 00:40 The end goal I wanna have is just inside this section is to create two different routes the user can visit inside our application
+这部分我们会创建两个不同的route，然后访问它们
 00:47 And based on the route or the URL user is visiting, I wanna see slit different contents appear on the screen
+然后根据用户访问的URL，我们会再屏幕上看到不同的内容
 00:55 The first thing we gonna do to make this happen is we are gonna to create two very small components we are just gonna make right now and eventually delete very shortly after
+要实现这个目的，我们首先要创建两个不同的component，用完后之后再把它们删除掉
 01:02 So inside the index.js file right above the React.render call.
+再index.js文件中，再React.render函数被调用之前
 01:06 I'm gonna create these two seperate components we are just using two test process.
+我会创建两个独立的component，以便完成我们的测试
 01:08 we're gonna make them both class based components.
+我们用基于class的形式创建这两个component
 01:20 so we say class Hello extends React.component, then we define just the render method inside here
+首先我们用class Hello extends React.component，然后再里面定义render方法
 01:25 Then we return a div, it contains the text Hello
+在其中返回一个div元素，包含文本Hello
 01:32 Then I duplicate exact the same thing, paste right beneath
+然后复制、粘贴
 01:35 Now I'm gonna change the text inside of this to be Goodbye
+然后把这里的文字改成Goodbye
 01:41 So I change the class name to goodbye and we change the text inside the div to goodbye as well
+我改变了class的名字，然后把div中的文字也改成goodbye
 01:49 Ok, there're two very small test components at this point we've done absolutely nothing specifically to react-router
+现在我们已经有了两个测试用的component，但是我们还没有用到react-router
 01:55 So now we are gonna to talking about what we have to write to get react-router started up in our application
+接下来我们讲解如何再我们的应用中使用react-router
 02:00 we are starting out by importing a coupou piece of code from react-router
+首先我们先从react-router库中引入一些模块
 02:05 and we are going to wire each of them up in the ReactDom.render call
+然后再把这些模块再ReactDOM.render方法中组合再一起
 02:08 So let's go to the top of the file and get started
+我们从文件顶部开始
 02:14 I'm gonna to flipped up to the top of the file and I'm gonna add an import statement
+增加import声明
 02:20 we're gonna import a couple different items from react-router-dom
+从react-router-dom模块中引入一些东西
 02:25 The first thing I'm gonna grab is BrowserRouter
+首先我们要引入的是BrowserRouter
 02:34 This Browser Router object right here is inside the react history library and decides what exactly to do based on the change of URL
+这里的BrowserRouter对象是在react的history库中，作用是根据URL的变化决定组件的行为
 02:44 The term BrowserRouter in particular is saying I wanna BrowserRouter to look at the entire URL when deciding what different componets show on the screen
+具体是根据URL来决定再屏幕中显示不同的component
 02:48 And we definitly talk about some of the different aspects of this later on
+我们之后肯定会再讲到这部分内容
 02:53 so from right now, we are gonna say this is a piece of code in react history library
+目前我们就暂且认为这是从react的history库中引入的一段代码
 03:00 The next thing we are gonna import is the Route Component
+接下来我们要引入的是Route组件
 03:04 So the Route component here is the real workhorse of all things of react-router
+Route组件是react-router功能得以实现的核心
+
+03:13 Route组件继承自React.Component，我们可以再其他React组件的render方法中和普通的React组件一同使用
+03:26 Route组件的作用是提供一些配置，如：如果URL是这样的，我们就会显示这个组件，如果URL是那样的，就会显示那个组件
+03:35 所以Route组件的作用就是提供对react-router的配置
+03:39 现在我们已经引入了这两个对象，也已经创建了这两个测试组件
+03:44 接下来我们在文件底部的ReactDOM.render方法中把它们组合在一起用起来
+03:53 我们把代码拉下来，删除整个APP，不让它显示
+04:01 然后把它替换为BrowserRouter
+04:06 然后加上关闭标签
+04:11 接下来我们创建前面提到过的配置部分
+04:20 通过创建两个Route组件，把它们分别映射到两个测试UI组件中去
+04:24 首先创建一个Route实例
+04:26 然后再来一个
+04:35 有两个对于每个Route实例都很重要而且是必须的属性
+04:40 第一个是path，第二个是component
+04:53 path的值永远是string类型，表示如果用户访问这个route，那就会显示这个component
+05:02 实际上，这个api很有用，如果我访问这个URL（或route），我会再屏幕中看到这个component
+05:10 如果用户访问URL和这里的path不匹配，那么这个component就不会出现
+05:14 让我们完成这部分的代码，看看再实际中是如何应用的
+05:22 如果用户访问一个叫做/hello的route，我想要Hello组件显示
+05:33 如果用户访问/GoodBye，那Goodbye组件就会显示
+05:39 好，这就是我们要对react-router所做的配置，去让浏览器显示我们想让它显示的内容
+05:41 现在我们切到浏览器下
+05:47 我已经在浏览器中指定要访问localhost:8080
+05:52 现在，如果我们刷新页面，你将会看到这里有个醒目的错误提示
+05:55 提示说Router只能有一个子元素
+05:59 我犯了个小错误，现在回到编辑器下，你看到这里有个BrowserRouter
+06:03 刚才的错误提示我们，Hey，你只能有一个子元素
+06:09 意思其实是说我们必须用一个div元素把这一堆route包起来
+06:16 现在我们用div把我们刚才定义的两个route包起来了
+06:18 现在我们回到浏览器、刷新
+06:23 你会看到屏幕上啥也没显示
+06:25 这其实是合理的
+06:29 再看下我们刚才写的代码，我们看到有两个route
+06:36 再每个route中，我们指定了如果用户访问/Hello或/Goodbye，然后显示对应的组件
+06:42 如果是其他情况，则什么都不显示
+06:45 现在我们访问这些route，看看会怎样
+06:50 我们回到地址栏，把URL加上/Hello
+06:59 回车后，App启动，react-router...其实是history查看这个URL
+07:06 解析出对应的route，传递给react-router，react-router知道了这个route是/Hello
+07:11 然后会映射到Hello组件，因此屏幕上会显示Hello
+07:15 同样的，我们也可以访问/Goodbye
+07:19 现在屏幕上显示了Goodbye
+07:25 我们可以访问任何route，我们可以在这儿随便输入
+07:33 点击回车，react-router会不知道该显示哪个component，因为再代码中没有对这个route进行配置
+07:37 最终，它会什么都不显示
+07:40 以上就是react-router大概是如何使用的
+07:51 任何时候，我们创建了配置，放置了BrowserRouter标签，然后在里面定义了一些Route组件，每个组件都和一个path对应
+07:53 然后根据URL将对应的组件显示出来
+07:57 如果我们想在这里显示一些别的内容
+07:59 或许是一个头部神马的
+08:08 我们可以在这里和Route一起添加任意的组件、元素神马的
+08:12 也许我们总是想向用户展示一个Header
+08:19 我们可以把文字直接写在Route组件上面
+08:22 现在我们访问/Hello
+08:33 可以看到Header显示出来了，Hello也在，如果我们访问/Goodbye，仍然可以看到Header，但是这里变成了Goodbye
+08:41 实际上，我们使用了Route组件，根据URL去显示或者隐藏子元素
+08:49 这部分我们利用了两个玩具组件（仅包含文字），讲解了React-router的一些基础知识
+08:57 在下一节中，我们很快就会讲到如果把这些知识应用到我们的app中
